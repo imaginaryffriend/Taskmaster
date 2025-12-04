@@ -5,7 +5,7 @@ import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
 import CommunityCard from './components/CommunityCard';
 import CommunityForm from './components/CommunityForm';
-
+import Dashboard from './components/Dashboard';
 function App() {
   const [activeTab, setActiveTab] = useState('tasks');
   const [tasks, setTasks] = useState([]);
