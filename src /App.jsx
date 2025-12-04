@@ -5,15 +5,16 @@ import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
 import CommunityCard from './components/CommunityCard';
 import CommunityForm from './components/CommunityForm';
-import Dashboard from './components/Dashboard';
+import Dashboard from './components/Dashboard'; // ADD THIS
+
 function App() {
-  const [activeTab, setActiveTab] = useState('dashboard');
+  const [activeTab, setActiveTab] = useState('dashboard'); // CHANGE THIS
   const [tasks, setTasks] = useState([]);
   const [communities, setCommunities] = useState([
     {
       id: 1,
       name: 'React Developers',
-      description: 'A community for React developers',
+      description: 'Learn and share React knowledge',
       members: 245,
       category: 'Programming'
     },
@@ -66,7 +67,10 @@ function App() {
       <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
       
       <div className="container">
-        {activeTab === 'tasks' ? (
+        {/* ADD THIS DASHBOARD CHECK */}
+        {activeTab === 'dashboard' ? (
+          <Dashboard tasks={tasks} communities={communities} />
+        ) : activeTab === 'tasks' ? (
           <>
             <TaskForm onSubmit={addTask} />
             <TaskList tasks={tasks} onDelete={deleteTask} onToggle={toggleTask} />
