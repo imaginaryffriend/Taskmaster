@@ -1,0 +1,18 @@
+import React, { useState } from 'react';
+
+const TaskItem = ({ task }) => {
+  const [completed, setCompleted] = useState(task.completed);
+
+  return (
+    <div className={`task-item ${completed ? 'completed' : ''}`}>
+      <input
+        type="checkbox"
+        checked={completed}
+        onChange={() => setCompleted(!completed)}
+      />
+      <span>{task.text}</span>
+    </div>
+  );
+};
+
+export default TaskItem;
