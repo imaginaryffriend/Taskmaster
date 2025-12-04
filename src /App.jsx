@@ -13,23 +13,21 @@ function App() {
     {
       id: 1,
       name: 'React Developers',
-      description: 'Learn and share React knowledge',
+      description: 'A community for React developers',
       members: 245,
-      category: 'Programming',
-      tags: ['React', 'JavaScript']
+      category: 'Programming'
     },
     {
       id: 2,
-      name: 'UI/UX Design',
+      name: 'UI/UX Designers',
       description: 'Design tips and resources',
       members: 189,
-      category: 'Design',
-      tags: ['Figma', 'Design']
+      category: 'Design'
     }
   ]);
   const [showCommunityForm, setShowCommunityForm] = useState(false);
 
-  // Task Functions
+  // Task functions
   const addTask = (task) => {
     setTasks([...tasks, { ...task, id: Date.now(), completed: false }]);
   };
@@ -44,11 +42,11 @@ function App() {
     ));
   };
 
-  // Community Functions
-  const addCommunity = (communityData) => {
+  // Community functions
+  const addCommunity = (community) => {
     const newCommunity = {
       id: Date.now(),
-      ...communityData,
+      ...community,
       members: 1
     };
     setCommunities([...communities, newCommunity]);
@@ -78,7 +76,7 @@ function App() {
             <div className="communities-header">
               <h2>Communities</h2>
               <button 
-                className="create-community-btn"
+                className="create-btn"
                 onClick={() => setShowCommunityForm(true)}
               >
                 + Create Community
@@ -86,8 +84,8 @@ function App() {
             </div>
 
             {showCommunityForm && (
-              <div className="modal">
-                <div className="modal-content">
+              <div className="modal-overlay">
+                <div className="modal">
                   <CommunityForm 
                     onSubmit={addCommunity}
                     onCancel={() => setShowCommunityForm(false)}
@@ -96,7 +94,7 @@ function App() {
               </div>
             )}
 
-            <div className="communities-list">
+            <div className="communities-grid">
               {communities.map(community => (
                 <CommunityCard
                   key={community.id}
